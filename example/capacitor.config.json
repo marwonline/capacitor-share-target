@@ -3,5 +3,5 @@
   "appName": "DevNull",
   "bundledWebRuntime": true,
   "npmClient": "yarn",
-  "webDir": "www"
+  "webDir": "dist"
 }
