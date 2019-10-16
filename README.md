@@ -29,4 +29,24 @@ public class MainActivity extends BridgeActivity {
     }
 }
 ```
-
+And also register the Intents you want to listen in your `AndroidManifest.xml`:
+(Copied from https://developer.android.com/training/sharing/receive#kotlin)
+```xml
+<activity android:name=".ui.MyActivity" >
+    <intent-filter>
+        <action android:name="android.intent.action.SEND" />
+        <category android:name="android.intent.category.DEFAULT" />
+        <data android:mimeType="image/*" />
+    </intent-filter>
+    <intent-filter>
+        <action android:name="android.intent.action.SEND" />
+        <category android:name="android.intent.category.DEFAULT" />
+        <data android:mimeType="text/plain" />
+    </intent-filter>
+    <intent-filter>
+        <action android:name="android.intent.action.SEND_MULTIPLE" />
+        <category android:name="android.intent.category.DEFAULT" />
+        <data android:mimeType="image/*" />
+    </intent-filter>
+</activity>
+```

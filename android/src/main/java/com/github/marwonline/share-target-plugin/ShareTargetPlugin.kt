@@ -6,6 +6,7 @@ import android.os.Parcelable
 import com.getcapacitor.NativePlugin
 import com.getcapacitor.Plugin
 
+@Suppress("unused")
 @NativePlugin
 class SharePlugin : Plugin() {
 
