@@ -1,9 +1,9 @@
-declare module "@capacitor/core" {
+declare global {
   interface PluginRegistry {
-    ShareTargetPlugin: ShareTargetPluginPlugin;
+    ShareTargetPlugin?: ShareTargetPlugin;
   }
 }
 
-export interface ShareTargetPluginPlugin {
+export interface ShareTargetPlugin {
 
 }
