@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title> <%= htmlWebpackPlugin.options.title %> </title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1,maximum-scale=1,initial-scale=1,viewport-fit=cover">
+    <style type="text/css">
+        html {
+            height: 100vh;
+            overflow: hidden;
+            padding-top: constant(safe-area-inset-top);
+            padding-top: env(safe-area-inset-top);
+            padding-left: constant(safe-area-inset-left);
+            padding-left: env(safe-area-inset-left);
+            padding-right: constant(safe-area-inset-right);
+            padding-right: env(safe-area-inset-right);
+            padding-bottom: constant(safe-area-inset-bottom);
+            padding-bottom: env(safe-area-inset-bottom);
+        }
+        body {
+            height: 100vh;
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+<div id="react_container">
+    The app did now load properly!
+</div>
+</body>
+</html>

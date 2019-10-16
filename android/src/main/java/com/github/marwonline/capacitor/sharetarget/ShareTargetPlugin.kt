@@ -1,4 +1,4 @@
-package com.github.marwonline.`share-target-plugin`
+package com.github.marwonline.capacitor.sharetarget
 
 import android.content.Intent
 import android.net.Uri
