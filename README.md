@@ -11,7 +11,7 @@ Feel free to contribute.
 
 ### Android
 
-To use the pluign on Android, you must register it in `MainActivity.java`.
+To use the plugin on Android, you must register it in `MainActivity.java`.
 ```java
 // Other imports...
 import com.webviewOverlay.plugin.WebviewOverlayPlugin;
@@ -24,7 +24,7 @@ public class MainActivity extends BridgeActivity {
         // Initializes the Bridge
         this.init(savedInstanceState, new ArrayList<Class<? extends Plugin>>() {{
             // Additional plugins you've installed go here
-            add(WebviewOverlayPlugin.class);
+            add(SharePlugin.class);
         }});
     }
 }
