@@ -8,7 +8,7 @@ import com.getcapacitor.Plugin
 
 @Suppress("unused")
 @NativePlugin
-class SharePlugin : Plugin() {
+class ShareTargetPlugin : Plugin() {
 
 
     override fun handleOnNewIntent(intent: Intent?) {
