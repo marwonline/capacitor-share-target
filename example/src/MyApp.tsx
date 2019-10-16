@@ -1,6 +1,6 @@
 import React, {ReactElement, useEffect, useMemo} from "react";
 import {BrowserRouter as Router, NavLink, Route} from 'react-router-dom';
-import {IShareTargetPlugin} from "@marwonline/capacitor-share-target/src";
+import {IShareTargetPlugin, ShareTargetEventData} from "@marwonline/capacitor-share-target/src";
 
 import {Home} from './views/Home';
 
@@ -20,8 +20,12 @@ interface MenuEntry {
 if (ShareTargetPlugin) {
   ShareTargetPlugin.addListener(
     'text',
-    alert
+    (data: ShareTargetEventData) => {
+      alert(JSON.stringify(data));
+    }
   )
+} else {
+  alert('ShareTargetPlugin not initialized!');
 }
 
 const NAVIGATION_ACTIVE_CLASS = 'nav-active';

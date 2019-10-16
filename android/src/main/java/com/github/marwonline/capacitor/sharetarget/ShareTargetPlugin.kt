@@ -41,10 +41,12 @@ class ShareTargetPlugin : Plugin() {
 
     private fun handleSendText(intend: Intent) {
         val data = JSObject()
-        data.put("items", JSArray {
-            JSObject().apply {
-                put("mimeType", intend.type)
-            }
+        data.put("items", JSArray().apply {
+            put(
+                    JSObject().apply {
+                        put("mimeType", intend.type)
+                    }
+            )
         })
 
         notifyListeners(ShareTargetEventName.TEXT.jsName, data)
@@ -61,7 +63,6 @@ class ShareTargetPlugin : Plugin() {
             // Update UI to reflect multiple images being shared
         }
     }
-
 
 
 }
