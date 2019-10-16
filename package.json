@@ -1,5 +1,5 @@
 {
-  "name": "share-target",
+  "name": "@marwonline/capacitor-share-target",
   "version": "0.0.1",
   "description": "Add a share target to your capacitor app.",
   "main": "dist/esm/index.js",

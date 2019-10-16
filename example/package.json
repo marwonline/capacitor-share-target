@@ -1,5 +1,5 @@
 {
-  "name": "DevNull",
+  "name": "devnull",
   "version": "1.0.0",
   "description": "DevNull - The app that eats anything.",
   "main": "index.js",
@@ -20,7 +20,7 @@
     "@capacitor/core": "^1.2.1",
     "@emotion/core": "^10.0.17",
     "@emotion/styled": "^10.0.17",
-    "@marwonline/capacitor-share-target": "latest",
+    "@marwonline/capacitor-share-target": "https://github.com/marwonline/capacitor-share-target.git",
     "react": "^16.8.6",
     "react-contenteditable": "^3.3.2",
     "react-dom": "^16.8.6",

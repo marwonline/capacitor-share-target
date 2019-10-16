@@ -828,6 +828,13 @@
   resolved "https://registry.yarnpkg.com/@emotion/weak-memoize/-/weak-memoize-0.2.4.tgz#622a72bebd1e3f48d921563b4b60a762295a81fc"
   integrity sha512-6PYY5DVdAY1ifaQW6XYTnOMihmBVT27elqSjEoodchsGjzYlEsTQMcEhSud99kVawatyTZRTiVkJ/c6lwbQ7nA==
 
+"@marwonline/capacitor-share-target@https://github.com/marwonline/capacitor-share-target.git":
+  version "0.0.1"
+  resolved "https://github.com/marwonline/capacitor-share-target.git#ac84ac510a7156c30ab0487bd70b12daac04322d"
+  dependencies:
+    "@capacitor/cli" "^1.2.1"
+    "@capacitor/core" "^1.2.1"
+
 "@types/events@*":
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/@types/events/-/events-3.0.0.tgz#2862f3f58a9a7f7c3e78d79f130dd4d71c25c2a7"
