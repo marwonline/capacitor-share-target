@@ -3,6 +3,8 @@ package com.github.marwonline.capacitor.sharetarget
 import android.content.Intent
 import android.net.Uri
 import android.os.Parcelable
+import com.getcapacitor.JSArray
+import com.getcapacitor.JSObject
 import com.getcapacitor.NativePlugin
 import com.getcapacitor.Plugin
 
@@ -10,6 +12,14 @@ import com.getcapacitor.Plugin
 @NativePlugin
 class ShareTargetPlugin : Plugin() {
 
+    companion object {
+        enum class ShareTargetEventName(val jsName: String) {
+            TEXT("text"),
+            IMAGE("image")
+        }
+    }
+
+    // See documentation https://developer.android.com/training/sharing/receive#kotlin
 
     override fun handleOnNewIntent(intent: Intent?) {
 
@@ -30,9 +40,16 @@ class ShareTargetPlugin : Plugin() {
     }
 
     private fun handleSendText(intend: Intent) {
+        val data = JSObject()
+        data.put("items", JSArray {
+            JSObject().apply {
+                put("mimeType", intend.type)
+            }
+        })
 
-
+        notifyListeners(ShareTargetEventName.TEXT.jsName, data)
     }
+
     private fun handleSendImage(intent: Intent) {
         (intent.getParcelableExtra<Parcelable>(Intent.EXTRA_STREAM) as? Uri)?.let {
             // Update UI to reflect image being shared
