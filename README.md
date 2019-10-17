@@ -1,5 +1,5 @@
 # Capacitor Share Target Plugin
-[Capacitor](https://capacitor.ionicframework.com/) plugin to make your app a native share target
+[Ionic Capacitor](https://capacitor.ionicframework.com/) plugin to make your app a native share target
 
 **ATTENTION:**
 This project does not deliver a ready to use solution, yet. 
