@@ -39,17 +39,21 @@ class ShareTargetPlugin : Plugin() {
         }
     }
 
-    private fun handleSendText(intend: Intent) {
-        val data = JSObject()
-        data.put("items", JSArray().apply {
-            put(
-                    JSObject().apply {
-                        put("mimeType", intend.type)
-                    }
-            )
-        })
+    private fun handleSendText(intent: Intent) {
+        intent.getStringExtra(Intent.EXTRA_TEXT)?.let { text ->
+            val data = JSObject()
+            data.put("items", JSArray().apply {
+                put(
+                        JSObject().apply {
+                            put("assetType", "text")
+                            put("mimeType", intent.type)
+                            put("text", text)
+                        }
+                )
+            })
 
-        notifyListeners(ShareTargetEventName.TEXT.jsName, data)
+            notifyListeners(ShareTargetEventName.TEXT.jsName, data)
+        }
     }
 
     private fun handleSendImage(intent: Intent) {
