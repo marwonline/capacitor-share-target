@@ -11,6 +11,7 @@ Feel free to contribute.
 
 ### Android
 
+#### Adjust the Activity
 To use the plugin on Android, you must register it in `MainActivity.java`.
 ```java
 // Other imports...
@@ -51,5 +52,32 @@ And also register the Intents you want to listen in your `AndroidManifest.xml`:
 </activity>
 ```
 
+#### Adjust your app code
+
+Add the following snippet near your app initialization logic. The Capacitor core will make sure that 
+all intents are processed, even if your event handler is registered later.
+
+```typescript
+import {Plugins} from '@capacitor/core';
+import {IShareTargetPlugin, ShareTargetEventData} from "@marwonline/capacitor-share-target/src"; 
+const ShareTargetPlugin = Plugins.ShareTargetPlugin as IShareTargetPlugin;
+
+if (ShareTargetPlugin) {
+  ShareTargetPlugin.addListener(
+    'text',
+    (data: ShareTargetEventData) => {
+      alert(JSON.stringify(data));
+    }
+  );
+  ShareTargetPlugin.addListener(
+    'image',
+    (data: ShareTargetEventData) => {
+      alert(JSON.stringify(data));
+    }
+  );
+}
+```
+
+## Development
 
 [How to trigger custom intents on Android](https://developer.android.com/guide/components/intents-common#AdbIntents)

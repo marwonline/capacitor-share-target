@@ -1,6 +1,6 @@
 import React, {ReactElement, useEffect, useMemo} from "react";
 import {BrowserRouter as Router, NavLink, Route} from 'react-router-dom';
-import { IShareTargetPlugin, ShareTargetEventData} from "@marwonline/capacitor-share-target/src";
+import {IShareTargetPlugin, ShareTargetEventData} from "@marwonline/capacitor-share-target/src";
 
 import {Home} from './views/Home';
 
@@ -8,7 +8,7 @@ import {Device, DeviceInfo, Plugins} from '@capacitor/core';
 import styled from "@emotion/styled";
 
 const {SplashScreen} = Plugins;
-const ShareTargetPlugin: IShareTargetPlugin|undefined = Plugins.ShareTargetPlugin as IShareTargetPlugin;
+const ShareTargetPlugin = Plugins.ShareTargetPlugin as IShareTargetPlugin;
 
 interface MenuEntry {
   path: string;
@@ -23,15 +23,13 @@ if (ShareTargetPlugin) {
     (data: ShareTargetEventData) => {
       alert(JSON.stringify(data));
     }
-  )
+  );
   ShareTargetPlugin.addListener(
     'image',
     (data: ShareTargetEventData) => {
       alert(JSON.stringify(data));
     }
-  )
-} else {
-  alert('ShareTargetPlugin not initialized!');
+  );
 }
 
 const NAVIGATION_ACTIVE_CLASS = 'nav-active';
