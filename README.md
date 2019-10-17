@@ -15,19 +15,20 @@ Feel free to contribute.
 To use the plugin on Android, you must register it in `MainActivity.java`.
 ```java
 // Other imports...
-import com.webviewOverlay.plugin.WebviewOverlayPlugin;
+
+import com.github.marwonline.capacitor.sharetarget.ShareTargetPlugin;
 
 public class MainActivity extends BridgeActivity {
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+  @Override
+  public void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
 
-        // Initializes the Bridge
-        this.init(savedInstanceState, new ArrayList<Class<? extends Plugin>>() {{
-            // Additional plugins you've installed go here
-            add(SharePlugin.class);
-        }});
-    }
+    // Initializes the Bridge
+    this.init(savedInstanceState, new ArrayList<Class<? extends Plugin>>() {{
+      // Additional plugins you've installed go here
+      add(ShareTargetPlugin.class);
+    }});
+  }
 }
 ```
 And also register the Intents you want to listen in your `AndroidManifest.xml`:
