@@ -18,6 +18,7 @@ export interface TextAsset extends ShareAsset {
 
 export interface ImageAsset extends ShareAsset {
   assetType: 'image';
+  uri: string;
 }
 
 

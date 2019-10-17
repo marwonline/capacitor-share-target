@@ -7,6 +7,7 @@ import com.getcapacitor.JSArray
 import com.getcapacitor.JSObject
 import com.getcapacitor.NativePlugin
 import com.getcapacitor.Plugin
+import org.json.JSONObject
 
 @Suppress("unused")
 @NativePlugin
@@ -33,8 +34,9 @@ class ShareTargetPlugin : Plugin() {
                 }
 
             }
-            intent?.action == Intent.ACTION_SEND_MULTIPLE -> {
-
+            intent?.action == Intent.ACTION_SEND_MULTIPLE
+                    && intent.type?.startsWith("image/") == true -> {
+                handleSendMultipleImages(intent) // Handle multiple images being sent
             }
         }
     }
@@ -59,12 +61,41 @@ class ShareTargetPlugin : Plugin() {
     private fun handleSendImage(intent: Intent) {
         (intent.getParcelableExtra<Parcelable>(Intent.EXTRA_STREAM) as? Uri)?.let {
             // Update UI to reflect image being shared
+            uri ->
+
+            val data = JSObject()
+            data.put("items", JSArray().apply {
+                put(
+                        JSObject().apply {
+                            put("assetType", "image")
+                            put("mimeType", intent.type)
+                            put("uri", uri)
+                        }
+                )
+            })
+
+            notifyListeners(ShareTargetEventName.IMAGE.jsName, data)
         }
     }
 
     private fun handleSendMultipleImages(intent: Intent) {
-        intent.getParcelableArrayListExtra<Parcelable>(Intent.EXTRA_STREAM)?.let {
+        (intent.getParcelableArrayListExtra<Parcelable>(Intent.EXTRA_STREAM) as? java.util.ArrayList<Uri>)?.let {
+            uris ->
             // Update UI to reflect multiple images being shared
+            val data = JSObject()
+            data.put("items", JSArray().apply {
+                uris.forEach {
+                    uri ->
+                    put(
+                            JSObject().apply {
+                                put("assetType", "image")
+                                put("mimeType", intent.type)
+                                put("uri", uri)
+                            }
+                    )
+                }
+            })
+            notifyListeners(ShareTargetEventName.IMAGE.jsName, data)
         }
     }
 
