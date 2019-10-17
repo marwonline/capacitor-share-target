@@ -7,7 +7,6 @@ import com.getcapacitor.JSArray
 import com.getcapacitor.JSObject
 import com.getcapacitor.NativePlugin
 import com.getcapacitor.Plugin
-import org.json.JSONObject
 
 @Suppress("unused")
 @NativePlugin
@@ -20,8 +19,11 @@ class ShareTargetPlugin : Plugin() {
         }
     }
 
-    // See documentation https://developer.android.com/training/sharing/receive#kotlin
 
+
+    /**
+     * See documentation @see {https://developer.android.com/training/sharing/receive#kotlin}
+     */
     override fun handleOnNewIntent(intent: Intent?) {
 
         when {
@@ -57,7 +59,7 @@ class ShareTargetPlugin : Plugin() {
                 )
             })
 
-            notifyListeners(ShareTargetEventName.TEXT.jsName, data)
+            notifyListeners(ShareTargetEventName.TEXT.jsName, data, true)
         }
     }
 
@@ -77,7 +79,7 @@ class ShareTargetPlugin : Plugin() {
                 )
             })
 
-            notifyListeners(ShareTargetEventName.IMAGE.jsName, data)
+            notifyListeners(ShareTargetEventName.IMAGE.jsName, data, true)
         }
     }
 
@@ -98,7 +100,7 @@ class ShareTargetPlugin : Plugin() {
                     )
                 }
             })
-            notifyListeners(ShareTargetEventName.IMAGE.jsName, data)
+            notifyListeners(ShareTargetEventName.IMAGE.jsName, data, true)
         }
     }
 
