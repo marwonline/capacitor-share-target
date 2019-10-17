@@ -41,6 +41,9 @@ class ShareTargetPlugin : Plugin() {
         }
     }
 
+    /**
+     * @see {https://developer.android.com/guide/components/intents-common#Messaging}
+     */
     private fun handleSendText(intent: Intent) {
         intent.getStringExtra(Intent.EXTRA_TEXT)?.let { text ->
             val data = JSObject()

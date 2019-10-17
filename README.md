@@ -50,3 +50,6 @@ And also register the Intents you want to listen in your `AndroidManifest.xml`:
     </intent-filter>
 </activity>
 ```
+
+
+[How to trigger custom intents on Android](https://developer.android.com/guide/components/intents-common#AdbIntents)
