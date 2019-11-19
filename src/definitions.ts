@@ -4,7 +4,7 @@ declare global {
   }
 }
 
-export type ShareTargetEventName = 'text' | 'image';
+export type ShareType = 'text' | 'image';
 
 export interface ShareAsset {
   assetType: string;
@@ -12,20 +12,19 @@ export interface ShareAsset {
 }
 
 export interface TextAsset extends ShareAsset {
-  assetType: 'text';
+  assetType: ShareType
   text: string;
 }
 
 export interface ImageAsset extends ShareAsset {
-  assetType: 'image';
+  assetType: ShareType;
   uri: string;
 }
-
 
 export interface ShareTargetEventData {
   items: ShareAsset[];
 }
 
 export interface IShareTargetPlugin {
-  addListener: (eventName: ShareTargetEventName, handler: (data: ShareTargetEventData) => void) => void;
+  addListener: (eventName: ShareType, handler: (data: ShareTargetEventData) => void) => void;
 }

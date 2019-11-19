@@ -13,7 +13,7 @@ import com.getcapacitor.Plugin
 class ShareTargetPlugin : Plugin() {
 
     companion object {
-        enum class ShareTargetEventName(val jsName: String) {
+        enum class ShareType(val jsName: String) {
             TEXT("text"),
             IMAGE("image")
         }
@@ -59,7 +59,7 @@ class ShareTargetPlugin : Plugin() {
                 )
             })
 
-            notifyListeners(ShareTargetEventName.TEXT.jsName, data, true)
+            notifyListeners(ShareType.TEXT.jsName, data, true)
         }
     }
 
@@ -79,12 +79,12 @@ class ShareTargetPlugin : Plugin() {
                 )
             })
 
-            notifyListeners(ShareTargetEventName.IMAGE.jsName, data, true)
+            notifyListeners(ShareType.IMAGE.jsName, data, true)
         }
     }
 
     private fun handleSendMultipleImages(intent: Intent) {
-        (intent.getParcelableArrayListExtra<Parcelable>(Intent.EXTRA_STREAM) as? java.util.ArrayList<Uri>)?.let {
+        intent.getParcelableArrayListExtra<Uri>(Intent.EXTRA_STREAM)?.let {
             uris ->
             // Update UI to reflect multiple images being shared
             val data = JSObject()
@@ -100,7 +100,7 @@ class ShareTargetPlugin : Plugin() {
                     )
                 }
             })
-            notifyListeners(ShareTargetEventName.IMAGE.jsName, data, true)
+            notifyListeners(ShareType.IMAGE.jsName, data, true)
         }
     }
 
