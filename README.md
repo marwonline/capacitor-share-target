@@ -11,7 +11,7 @@ Feel free to contribute.
 
 ### Android
 
-#### Adjust the Activity
+#### Adjust your Activity
 To use the plugin on Android, you must register it in `MainActivity.java`.
 ```java
 // Other imports...
@@ -31,26 +31,34 @@ public class MainActivity extends BridgeActivity {
   }
 }
 ```
-And also register the Intents you want to listen in your `AndroidManifest.xml`:
+And also register the Intents you want to listen in your `app/src/main/AndroidManifest.xml`:
 (Copied from https://developer.android.com/training/sharing/receive#kotlin)
 ```xml
-<activity android:name=".ui.MyActivity" >
-    <intent-filter>
-        <action android:name="android.intent.action.SEND" />
-        <category android:name="android.intent.category.DEFAULT" />
-        <data android:mimeType="image/*" />
-    </intent-filter>
-    <intent-filter>
-        <action android:name="android.intent.action.SEND" />
-        <category android:name="android.intent.category.DEFAULT" />
-        <data android:mimeType="text/plain" />
-    </intent-filter>
-    <intent-filter>
-        <action android:name="android.intent.action.SEND_MULTIPLE" />
-        <category android:name="android.intent.category.DEFAULT" />
-        <data android:mimeType="image/*" />
-    </intent-filter>
-</activity>
+<manifest >
+    <application>
+        <!-- add this here -->
+        <activity android:name=".ui.MyActivity" >
+            <!-- for text and URI sharing -->
+            <intent-filter>
+                <action android:name="android.intent.action.SEND" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:mimeType="text/plain" />
+            </intent-filter>
+            <!-- for image sharing -->
+            <intent-filter>
+                <action android:name="android.intent.action.SEND" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:mimeType="image/*" />
+            </intent-filter>
+            <!-- multiple image sharing -->
+            <intent-filter>
+                <action android:name="android.intent.action.SEND_MULTIPLE" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:mimeType="image/*" />
+            </intent-filter>
+        </activity>
+    </application>
+</manifest>
 ```
 
 #### Adjust your app code
