@@ -89,4 +89,33 @@ if (ShareTargetPlugin) {
 
 ## Development
 
+### Build the demo app
+
+You can find a demo app called "DevNull" in the `example` folder. 
+It's a normal Capacitor app and you can build it with the provided npm/yarn scripts:
+
+```bash
+cd example
+yarn install
+npx cap update android
+yarn build_and_install_android
+```
+
+It's also possible to link the repository for local development. With the following
+commands the local source will be used for this plugin instead of the repository source code.
+
+```bash
+cd capacitor-share-target
+yarn link
+cd capacitor-share-target/example
+yarn link @marwonline/capacitor-share-target
+``` 
+
+To remove the link use the following script:
+```bash
+cd capacitor-share-target/example && yarn unlink @marwonline/capacitor-share-target
+```
+
+### References
+
 [How to trigger custom intents on Android](https://developer.android.com/guide/components/intents-common#AdbIntents)
