@@ -20,37 +20,6 @@ if (ShareTargetPlugin) {
   });
 }
 
-const NAVIGATION_ACTIVE_CLASS = 'nav-active';
-
-class AppCore {
-  private isRenderingDone = false;
-
-  constructor() {
-    this.retrieveDeviceData();
-  }
-
-  public renderingDone() {
-    this.isRenderingDone = true;
-    this.gg();
-  }
-
-  private async retrieveDeviceData() {
-    this.gg();
-  }
-
-  /**
-   * Starting the app when it's ready!
-   */
-  private gg() {
-    if (!this.isRenderingDone) {
-      return;
-    }
-    SplashScreen.hide();
-  }
-}
-
-const runtime = new AppCore();
-
 const Navigation = styled.nav`
   & {
     display: flex;
@@ -60,9 +29,7 @@ const Navigation = styled.nav`
   & a {
     display: inline-block;
     padding: 3px;
-
-  }
-  & a.${NAVIGATION_ACTIVE_CLASS} {
+    font-weight: bold;
     text-decoration: none;
   }
 `;
@@ -79,15 +46,15 @@ const Header = (): ReactElement => {
 const MyApp = (): ReactElement => {
 
   useEffect(() => {
-    runtime.renderingDone();
+    SplashScreen.hide();
   }, []);
 
   return (
     <Router>
       <Header/>
       <Switch>
+        <Route path="/" exact component={Home}/>
         <Route path="/device" component={DeviceView}/>
-        <Route path="/" component={Home}/>
       </Switch>
     </Router>
   )
