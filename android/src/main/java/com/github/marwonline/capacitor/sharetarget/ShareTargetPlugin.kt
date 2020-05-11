@@ -19,8 +19,6 @@ class ShareTargetPlugin : Plugin() {
         }
     }
 
-
-
     /**
      * See documentation @see {https://developer.android.com/training/sharing/receive#kotlin}
      */
@@ -103,6 +101,4 @@ class ShareTargetPlugin : Plugin() {
             notifyListeners(ShareType.IMAGE.jsName, data, true)
         }
     }
-
-
 }
