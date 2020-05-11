@@ -1,50 +1,29 @@
-import React, {ReactElement, useEffect, useMemo} from "react";
-import {BrowserRouter as Router, NavLink, Route} from 'react-router-dom';
+import React, {ReactElement, useEffect} from "react";
+import {BrowserRouter as Router, NavLink, Route, Switch} from 'react-router-dom';
 import {IShareTargetPlugin, ShareTargetEventData} from "@marwonline/capacitor-share-target/src";
 
 import {Home} from './views/Home';
 
-import {Device, DeviceInfo, Plugins} from '@capacitor/core';
+import {Plugins} from '@capacitor/core';
 import styled from "@emotion/styled";
+import {DeviceView} from "./views/DeviceView";
 
 const {SplashScreen} = Plugins;
 const ShareTargetPlugin = Plugins.ShareTargetPlugin as IShareTargetPlugin;
 
-interface MenuEntry {
-  path: string;
-  title: string;
-  exact?: boolean;
-  constructor: () => ReactElement;
-}
-
 if (ShareTargetPlugin) {
-  ShareTargetPlugin.addListener(
-    'text',
-    (data: ShareTargetEventData) => {
-      alert(JSON.stringify(data));
-    }
-  );
-  ShareTargetPlugin.addListener(
-    'image',
-    (data: ShareTargetEventData) => {
-      alert(JSON.stringify(data));
-    }
-  );
+  ShareTargetPlugin.addListener('text', (data: ShareTargetEventData) => {
+    alert(JSON.stringify(data));
+  });
+  ShareTargetPlugin.addListener('image', (data: ShareTargetEventData) => {
+    alert(JSON.stringify(data));
+  });
 }
 
 const NAVIGATION_ACTIVE_CLASS = 'nav-active';
 
 class AppCore {
   private isRenderingDone = false;
-  private info: DeviceInfo | null = null;
-  private readonly menuData: MenuEntry[] = [
-    {
-      path: '/',
-      title: 'Home',
-      exact: true,
-      constructor: Home
-    }
-  ];
 
   constructor() {
     this.retrieveDeviceData();
@@ -56,8 +35,6 @@ class AppCore {
   }
 
   private async retrieveDeviceData() {
-    this.info = await Device.getInfo();
-    console.log(this.info);
     this.gg();
   }
 
@@ -68,16 +45,8 @@ class AppCore {
     if (!this.isRenderingDone) {
       return;
     }
-    if (this.info === null) {
-      return;
-    }
     SplashScreen.hide();
   }
-
-  public get menu(): MenuEntry[] {
-    return this.menuData;
-  }
-
 }
 
 const runtime = new AppCore();
@@ -88,40 +57,26 @@ const Navigation = styled.nav`
     justify-content: flex-end;
     width: 100vw;
   }
-`;
+  & a {
+    display: inline-block;
+    padding: 3px;
 
-const MenuItem = styled.div`
-  display: inline-block;
-  padding: 3px;
-  & .${NAVIGATION_ACTIVE_CLASS} {
+  }
+  & a.${NAVIGATION_ACTIVE_CLASS} {
     text-decoration: none;
   }
 `;
 
 const Header = (): ReactElement => {
-  const menuData = useMemo<MenuEntry[]>(() => {
-    return runtime.menu;
-  }, []);
-
   return (
     <Navigation>
-      {
-        menuData.map((data: MenuEntry, index: number): ReactElement => {
-          return (
-            <MenuItem key={index}>
-              <NavLink activeClassName={NAVIGATION_ACTIVE_CLASS} to={data.path}>{data.title}</NavLink>
-            </MenuItem>
-          )
-        })
-      }
+      <NavLink to="/">Home</NavLink>
+      <NavLink to="/device">Device</NavLink>
     </Navigation>
   )
 };
 
 const MyApp = (): ReactElement => {
-  const menuData = useMemo<MenuEntry[]>(() => {
-    return runtime.menu;
-  }, []);
 
   useEffect(() => {
     runtime.renderingDone();
@@ -130,11 +85,10 @@ const MyApp = (): ReactElement => {
   return (
     <Router>
       <Header/>
-      {
-        menuData.map((item: MenuEntry, index: number): ReactElement => {
-          return <Route key={index} exact={item.exact} path={item.path} component={item.constructor}/>;
-        })
-      }
+      <Switch>
+        <Route path="/device" component={DeviceView}/>
+        <Route path="/" component={Home}/>
+      </Switch>
     </Router>
   )
 };
