@@ -25,7 +25,9 @@
     "react": "^16.8.6",
     "react-contenteditable": "^3.3.2",
     "react-dom": "^16.8.6",
-    "react-router-dom": "^5.0.1"
+    "react-redux": "^7.2.0",
+    "react-router-dom": "^5.0.1",
+    "redux": "^4.0.5"
   },
   "devDependencies": {
     "@babel/core": "^7.4.5",

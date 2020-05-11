@@ -1,4 +1,6 @@
 import React, {ReactElement, useEffect} from "react";
+import {Provider} from 'react-redux'
+
 import {BrowserRouter as Router, NavLink, Route, Switch} from 'react-router-dom';
 import {IShareTargetPlugin, ShareTargetEventData} from "@marwonline/capacitor-share-target/src";
 
@@ -7,16 +9,17 @@ import {Home} from './views/Home';
 import {Plugins} from '@capacitor/core';
 import styled from "@emotion/styled";
 import {DeviceView} from "./views/DeviceView";
+import store, {ingestIntent} from "./redux/store";
 
 const {SplashScreen} = Plugins;
 const ShareTargetPlugin = Plugins.ShareTargetPlugin as IShareTargetPlugin;
 
 if (ShareTargetPlugin) {
   ShareTargetPlugin.addListener('text', (data: ShareTargetEventData) => {
-    alert(JSON.stringify(data));
+    store.dispatch(ingestIntent(data));
   });
   ShareTargetPlugin.addListener('image', (data: ShareTargetEventData) => {
-    alert(JSON.stringify(data));
+    store.dispatch(ingestIntent(data));
   });
 }
 
@@ -50,13 +53,15 @@ const MyApp = (): ReactElement => {
   }, []);
 
   return (
-    <Router>
-      <Header/>
-      <Switch>
-        <Route path="/" exact component={Home}/>
-        <Route path="/device" component={DeviceView}/>
-      </Switch>
-    </Router>
+    <Provider store={store}>
+      <Router>
+        <Header/>
+        <Switch>
+          <Route path="/" exact component={Home}/>
+          <Route path="/device" component={DeviceView}/>
+        </Switch>
+      </Router>
+    </Provider>
   )
 };
 
