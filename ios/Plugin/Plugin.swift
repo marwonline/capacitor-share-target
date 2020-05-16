@@ -1,5 +1,7 @@
 import Foundation
 import Capacitor
+import UIKit
+
 
 /**
  * Please read the Capacitor iOS Plugin Development Guide
@@ -12,14 +14,18 @@ public class ShareTarget: CAPPlugin {
     
     let appGroupName = "group.com.github.marwonline.capacitor.share.target"
     
-    @objc func echo(_ call: CAPPluginCall) {
-        let value = call.getString("value") ?? ""
-        call.success([
-            "value": value
-        ])
+    override public func load() {
+        super.load()
+        NotificationCenter.default.addObserver(
+            forName: UIApplication.didBecomeActiveNotification,
+            object: nil,
+            queue: nil
+        ) { _ in
+            self.onViewWillAppear()
+        }
     }
     
-    func onViewWillAppear() {
+    public func onViewWillAppear() {
         let savedData = UserDefaults.init(suiteName: appGroupName)
         if savedData?.value(forKey: "image") != nil {
             if let url = savedData?.value(forKey: "image") as? String {
