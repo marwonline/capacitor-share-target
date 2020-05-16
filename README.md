@@ -91,11 +91,11 @@ if (ShareTargetPlugin) {
 
 ### Build the demo app
 
-You can find a demo app called "DevNull" in the `example` folder. 
+You can find a demo app called "DevNull" in github repository https://github.com/marwonline/capacitor-share-target-example. 
 It's a normal Capacitor app and you can build it with the provided npm/yarn scripts:
 
 ```bash
-cd example
+cd capacitor-share-target-example
 yarn install
 npx cap update android
 yarn build_and_install_android
@@ -107,13 +107,13 @@ commands the local source will be used for this plugin instead of the repository
 ```bash
 cd capacitor-share-target
 yarn link
-cd capacitor-share-target/example
+cd capacitor-share-target-example
 yarn link @marwonline/capacitor-share-target
 ``` 
 
 To remove the link use the following script:
 ```bash
-cd capacitor-share-target/example && yarn unlink @marwonline/capacitor-share-target
+cd capacitor-share-target-example && yarn unlink @marwonline/capacitor-share-target && yarn install --force
 ```
 
 ### References

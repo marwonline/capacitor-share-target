@@ -1,7 +1,0 @@
-{
-  "appId": "com.github.marwonline.capacitor.sharetarget.devnull",
-  "appName": "DevNull",
-  "bundledWebRuntime": true,
-  "npmClient": "yarn",
-  "webDir": "dist"
-}
