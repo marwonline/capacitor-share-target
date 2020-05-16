@@ -33,7 +33,7 @@ class ShareViewController: SLComposeServiceViewController {
             let contentType = kUTTypeImage as String
              
             // Verify the provider is valid
-            if let contents = content.attachments as? [NSItemProvider] {
+            if let contents = content.attachments {
                 // look for images
                 for attachment in contents {
                     if attachment.hasItemConformingToTypeIdentifier(contentType) {
@@ -42,7 +42,7 @@ class ShareViewController: SLComposeServiceViewController {
                             if let imageData = NSData(contentsOf: url as URL) {
                                 // Save the image
                                 // TODO: Save to a file
-                                self.saveImage(imageData)
+                                self.saveImage(imageData: imageData, contentType: contentType)
                             }
                         }
                     }
@@ -60,10 +60,11 @@ class ShareViewController: SLComposeServiceViewController {
         return []
     }
     
-    func saveImage(_ imageData: NSData) {
+    func saveImage(imageData: NSData, contentType: String) {
         if let prefs = UserDefaults(suiteName: appGroupName) {
             prefs.removeObject(forKey: "image")
             prefs.set(imageData, forKey: "image")
+            prefs.set(contentType, forKey: "mimeType")
         }
     }
 
