@@ -5,6 +5,26 @@
 This project does not deliver a ready to use solution, yet. 
 Feel free to contribute.
 
+## Features
+In the below tables you can see which features are working or not.
+### Android
+|Feature|Status|Description|
+|---|---|---|
+|Sharing text| beta (no tests) |   |
+|Sharing images| beta (no tests) | [PR #9](https://github.com/marwonline/capacitor-share-target/pull/9) |
+|Sharing audio files| - |   |
+|Sharing video files| - |   |
+
+### iOS
+iOS development not yet started
+|Feature|Status|Description|
+|---|---|---|
+|Sharing text| - |   |
+|Sharing images| - |   |
+|Sharing audio files| - |   |
+|Sharing video files| -  |   |
+
+
 ## Installation 
 
 `yarn add @marwonline/capacitor-share-target`
@@ -31,6 +51,7 @@ public class MainActivity extends BridgeActivity {
   }
 }
 ```
+
 And also register the Intents you want to listen in your `app/src/main/AndroidManifest.xml`:
 (Copied from https://developer.android.com/training/sharing/receive#kotlin)
 ```xml
@@ -68,7 +89,7 @@ all intents are processed, even if your event handler is registered later.
 
 ```typescript
 import {Plugins} from '@capacitor/core';
-import {IShareTargetPlugin, ShareTargetEventData} from "@marwonline/capacitor-share-target/src"; 
+import {loadAllFiles, IShareTargetPlugin, ShareTargetEventData} from "@marwonline/capacitor-share-target";
 const ShareTargetPlugin = Plugins.ShareTargetPlugin as IShareTargetPlugin;
 
 if (ShareTargetPlugin) {
@@ -81,7 +102,10 @@ if (ShareTargetPlugin) {
   ShareTargetPlugin.addListener(
     'image',
     (data: ShareTargetEventData) => {
-      alert(JSON.stringify(data));
+      // On Android `data` only has "content" URIs which we've to load now.
+      loadAllFiles(data).then((loadData) => {
+        alert(JSON.stringify(loadData));
+      });
     }
   );
 }
