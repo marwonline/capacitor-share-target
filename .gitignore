@@ -93,3 +93,4 @@ app/src/main/assets/public
 
 # build folder
 /dist
+/ios/Pods

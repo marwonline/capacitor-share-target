@@ -25,7 +25,7 @@
     "dist/",
     "ios/",
     "android/",
-    "ShareTarget.podspec"
+    "MarwonlineCapacitorShareTarget.podspec"
   ],
   "keywords": [
     "capacitor",

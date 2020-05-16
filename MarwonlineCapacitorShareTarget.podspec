@@ -1,6 +1,6 @@
 
   Pod::Spec.new do |s|
-    s.name = 'CapacitorShareTarget'
+    s.name = 'MarwonlineCapacitorShareTarget'
     s.version = '0.0.1'
     s.summary = 'desc'
     s.license = 'MIT'

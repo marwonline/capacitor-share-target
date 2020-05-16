@@ -15,6 +15,10 @@
 		50ADFFA42020D75100D50D53 /* Capacitor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50ADFFA52020D75100D50D53 /* Capacitor.framework */; };
 		50ADFFA82020EE4F00D50D53 /* Plugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 50ADFFA72020EE4F00D50D53 /* Plugin.m */; };
 		50E1A94820377CB70090CE1A /* Plugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E1A94720377CB70090CE1A /* Plugin.swift */; };
+		E302D40D24703BB9009A8E38 /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E302D40C24703BB9009A8E38 /* ShareViewController.swift */; };
+		E302D41024703BB9009A8E38 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E302D40E24703BB9009A8E38 /* MainInterface.storyboard */; };
+		E302D41524703D1D009A8E38 /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E302D40C24703BB9009A8E38 /* ShareViewController.swift */; };
+		E302D41624703D24009A8E38 /* Plugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E1A94720377CB70090CE1A /* Plugin.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,6 +45,10 @@
 		5E23F77F099397094342571A /* Pods-Plugin.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Plugin.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Plugin/Pods-Plugin.debug.xcconfig"; sourceTree = "<group>"; };
 		91781294A431A2A7CC6EB714 /* Pods-Plugin.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Plugin.release.xcconfig"; path = "Pods/Target Support Files/Pods-Plugin/Pods-Plugin.release.xcconfig"; sourceTree = "<group>"; };
 		96ED1B6440D6672E406C8D19 /* Pods-PluginTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PluginTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PluginTests/Pods-PluginTests.debug.xcconfig"; sourceTree = "<group>"; };
+		E302D40A24703BB9009A8E38 /* ShareTargetShareExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = ShareTargetShareExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		E302D40C24703BB9009A8E38 /* ShareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
+		E302D40F24703BB9009A8E38 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
+		E302D41124703BB9009A8E38 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F65BB2953ECE002E1EF3E424 /* Pods-PluginTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PluginTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PluginTests/Pods-PluginTests.release.xcconfig"; sourceTree = "<group>"; };
 		F6753A823D3815DB436415E3 /* Pods_PluginTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PluginTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -64,6 +72,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		E302D40724703BB9009A8E38 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -72,6 +87,7 @@
 			children = (
 				50ADFF8A201F53D600D50D53 /* Plugin */,
 				50ADFF95201F53D600D50D53 /* PluginTests */,
+				E302D40B24703BB9009A8E38 /* ShareTargetShareExtension */,
 				50ADFF89201F53D600D50D53 /* Products */,
 				8C8E7744173064A9F6D438E3 /* Pods */,
 				A797B9EFA3DCEFEA1FBB66A9 /* Frameworks */,
@@ -83,6 +99,7 @@
 			children = (
 				50ADFF88201F53D600D50D53 /* Plugin.framework */,
 				50ADFF91201F53D600D50D53 /* PluginTests.xctest */,
+				E302D40A24703BB9009A8E38 /* ShareTargetShareExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -126,6 +143,16 @@
 				F6753A823D3815DB436415E3 /* Pods_PluginTests.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E302D40B24703BB9009A8E38 /* ShareTargetShareExtension */ = {
+			isa = PBXGroup;
+			children = (
+				E302D40C24703BB9009A8E38 /* ShareViewController.swift */,
+				E302D40E24703BB9009A8E38 /* MainInterface.storyboard */,
+				E302D41124703BB9009A8E38 /* Info.plist */,
+			);
+			path = ShareTargetShareExtension;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -181,13 +208,30 @@
 			productReference = 50ADFF91201F53D600D50D53 /* PluginTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		E302D40924703BB9009A8E38 /* ShareTargetShareExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E302D41424703BB9009A8E38 /* Build configuration list for PBXNativeTarget "ShareTargetShareExtension" */;
+			buildPhases = (
+				E302D40624703BB9009A8E38 /* Sources */,
+				E302D40724703BB9009A8E38 /* Frameworks */,
+				E302D40824703BB9009A8E38 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ShareTargetShareExtension;
+			productName = TextShare;
+			productReference = E302D40A24703BB9009A8E38 /* ShareTargetShareExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		50ADFF7F201F53D600D50D53 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0920;
+				LastSwiftUpdateCheck = 1140;
 				LastUpgradeCheck = 0920;
 				ORGANIZATIONNAME = "Max Lynch";
 				TargetAttributes = {
@@ -201,6 +245,10 @@
 						LastSwiftMigration = 1100;
 						ProvisioningStyle = Automatic;
 					};
+					E302D40924703BB9009A8E38 = {
+						CreatedOnToolsVersion = 11.4.1;
+						ProvisioningStyle = Automatic;
+					};
 				};
 			};
 			buildConfigurationList = 50ADFF82201F53D600D50D53 /* Build configuration list for PBXProject "Plugin" */;
@@ -209,6 +257,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				Base,
 			);
 			mainGroup = 50ADFF7E201F53D600D50D53;
 			productRefGroup = 50ADFF89201F53D600D50D53 /* Products */;
@@ -217,6 +266,7 @@
 			targets = (
 				50ADFF87201F53D600D50D53 /* Plugin */,
 				50ADFF90201F53D600D50D53 /* PluginTests */,
+				E302D40924703BB9009A8E38 /* ShareTargetShareExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -233,6 +283,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E302D40824703BB9009A8E38 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E302D41024703BB9009A8E38 /* MainInterface.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -302,6 +360,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E302D41524703D1D009A8E38 /* ShareViewController.swift in Sources */,
 				50E1A94820377CB70090CE1A /* Plugin.swift in Sources */,
 				50ADFFA82020EE4F00D50D53 /* Plugin.m in Sources */,
 			);
@@ -315,6 +374,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		E302D40624703BB9009A8E38 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E302D41624703D24009A8E38 /* Plugin.swift in Sources */,
+				E302D40D24703BB9009A8E38 /* ShareViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -324,6 +392,17 @@
 			targetProxy = 50ADFF93201F53D600D50D53 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		E302D40E24703BB9009A8E38 /* MainInterface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E302D40F24703BB9009A8E38 /* Base */,
+			);
+			name = MainInterface.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		50ADFF9A201F53D600D50D53 /* Debug */ = {
@@ -458,6 +537,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.getcapacitor.Plugin;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -483,6 +563,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.getcapacitor.Plugin;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -518,6 +599,51 @@
 			};
 			name = Release;
 		};
+		E302D41224703BB9009A8E38 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
+				INFOPLIST_FILE = TextShare/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.getcapacitor.Plugin;
+				PRODUCT_NAME = ShareTargetShareExtension;
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		E302D41324703BB9009A8E38 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
+				INFOPLIST_FILE = TextShare/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.getcapacitor.Plugin;
+				PRODUCT_NAME = ShareTargetShareExtension;
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -544,6 +670,15 @@
 			buildConfigurations = (
 				50ADFFA0201F53D600D50D53 /* Debug */,
 				50ADFFA1201F53D600D50D53 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E302D41424703BB9009A8E38 /* Build configuration list for PBXNativeTarget "ShareTargetShareExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E302D41224703BB9009A8E38 /* Debug */,
+				E302D41324703BB9009A8E38 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
