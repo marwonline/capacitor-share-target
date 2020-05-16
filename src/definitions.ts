@@ -16,9 +16,18 @@ export interface TextAsset extends ShareAsset {
   text: string;
 }
 
+export function isTextAsset(asset: ShareAsset): asset is TextAsset {
+  return asset.assetType === 'text';
+}
+
 export interface ImageAsset extends ShareAsset {
   assetType: ShareType;
   uri: string;
+  base64?: string;
+}
+
+export function isImageAsset(asset: ShareAsset): asset is ImageAsset {
+  return asset.assetType === 'image';
 }
 
 export interface ShareTargetEventData {
