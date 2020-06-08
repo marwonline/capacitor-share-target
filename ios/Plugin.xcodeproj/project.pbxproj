@@ -18,7 +18,6 @@
 		E302D40D24703BB9009A8E38 /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E302D40C24703BB9009A8E38 /* ShareViewController.swift */; };
 		E302D41024703BB9009A8E38 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E302D40E24703BB9009A8E38 /* MainInterface.storyboard */; };
 		E302D41524703D1D009A8E38 /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E302D40C24703BB9009A8E38 /* ShareViewController.swift */; };
-		E302D41624703D24009A8E38 /* Plugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E1A94720377CB70090CE1A /* Plugin.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +48,9 @@
 		E302D40C24703BB9009A8E38 /* ShareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
 		E302D40F24703BB9009A8E38 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
 		E302D41124703BB9009A8E38 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E302D4182474289C009A8E38 /* ShareTargetShareExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ShareTargetShareExtension.entitlements; sourceTree = "<group>"; };
+		E3030BA7248EA08E00ED50DC /* Capacitor.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Capacitor.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E3030BA9248EA09200ED50DC /* Pods_Plugin.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_Plugin.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F65BB2953ECE002E1EF3E424 /* Pods-PluginTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PluginTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PluginTests/Pods-PluginTests.release.xcconfig"; sourceTree = "<group>"; };
 		F6753A823D3815DB436415E3 /* Pods_PluginTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PluginTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -138,6 +140,8 @@
 		A797B9EFA3DCEFEA1FBB66A9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E3030BA9248EA09200ED50DC /* Pods_Plugin.framework */,
+				E3030BA7248EA08E00ED50DC /* Capacitor.framework */,
 				50ADFFA52020D75100D50D53 /* Capacitor.framework */,
 				3B2A61DA5A1F2DD4F959604D /* Pods_Plugin.framework */,
 				F6753A823D3815DB436415E3 /* Pods_PluginTests.framework */,
@@ -148,6 +152,7 @@
 		E302D40B24703BB9009A8E38 /* ShareTargetShareExtension */ = {
 			isa = PBXGroup;
 			children = (
+				E302D4182474289C009A8E38 /* ShareTargetShareExtension.entitlements */,
 				E302D40C24703BB9009A8E38 /* ShareViewController.swift */,
 				E302D40E24703BB9009A8E38 /* MainInterface.storyboard */,
 				E302D41124703BB9009A8E38 /* Info.plist */,
@@ -221,7 +226,7 @@
 			dependencies = (
 			);
 			name = ShareTargetShareExtension;
-			productName = TextShare;
+			productName = ShareTargetShareExtension;
 			productReference = E302D40A24703BB9009A8E38 /* ShareTargetShareExtension.appex */;
 			productType = "com.apple.product-type.app-extension";
 		};
@@ -378,7 +383,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E302D41624703D24009A8E38 /* Plugin.swift in Sources */,
 				E302D40D24703BB9009A8E38 /* ShareViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -605,10 +609,11 @@
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CODE_SIGN_ENTITLEMENTS = ShareTargetShareExtension/ShareTargetShareExtension.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
-				INFOPLIST_FILE = TextShare/Info.plist;
+				DEVELOPMENT_TEAM = 3VVUAJRYYF;
+				INFOPLIST_FILE = ShareTargetShareExtension/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
@@ -628,10 +633,11 @@
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CODE_SIGN_ENTITLEMENTS = ShareTargetShareExtension/ShareTargetShareExtension.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
-				INFOPLIST_FILE = TextShare/Info.plist;
+				DEVELOPMENT_TEAM = 3VVUAJRYYF;
+				INFOPLIST_FILE = ShareTargetShareExtension/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				MTL_FAST_MATH = YES;

@@ -12,8 +12,8 @@ import UIKit
 @objc(ShareTarget)
 public class ShareTarget: CAPPlugin {
     
-    let appGroupName = "group.com.github.marwonline.capacitor.share.target"
-    
+    let appGroupName = "group.com.getcapacitor.Plugin"
+
     override public func load() {
         super.load()
         NotificationCenter.default.addObserver(
