@@ -27,7 +27,12 @@ iOS development not yet started
 
 ## Installation 
 
-`yarn add @marwonline/capacitor-share-target`
+~`yarn add @marwonline/capacitor-share-target`~
+
+This package is not yet publihsed on NPM. So you've to use the git URL to check this out. 
+
+`yarn add https://github.com/marwonline/capacitor-share-target.git` 
+
 
 ### Android
 
