@@ -140,6 +140,10 @@ To remove the link use the following script:
 cd capacitor-share-target-example && yarn unlink @marwonline/capacitor-share-target && yarn install --force
 ```
 
+### Check podspec file
+
+Linting: `pod spec lint`
+
 ### References
 
 [How to trigger custom intents on Android](https://developer.android.com/guide/components/intents-common#AdbIntents)
