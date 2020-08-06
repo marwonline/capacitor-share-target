@@ -8,6 +8,7 @@ Feel free to contribute.
 ## Features
 In the below tables you can see which features are working or not.
 ### Android
+
 |Feature|Status|Description|
 |---|---|---|
 |Sharing text| beta (no tests) |   |
@@ -17,6 +18,7 @@ In the below tables you can see which features are working or not.
 
 ### iOS
 iOS development not yet started
+
 |Feature|Status|Description|
 |---|---|---|
 |Sharing text| - |   |
@@ -29,7 +31,7 @@ iOS development not yet started
 
 ~`yarn add @marwonline/capacitor-share-target`~
 
-This package is not yet publihsed on NPM. So you've to use the git URL to check this out. 
+This package is not yet published on NPM. So you've to use the git URL to check this out. 
 
 `yarn add https://github.com/marwonline/capacitor-share-target.git` 
 
