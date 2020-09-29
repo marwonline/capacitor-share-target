@@ -5,6 +5,12 @@
 This project does not deliver a ready to use solution, yet. 
 Feel free to contribute.
 
+## Alternatives
+
+- Plugin: [Send Intent](https://github.com/tavosansal/capacitor-plugin-send-intent)
+- Proposal: [SendIntent Android](https://github.com/capacitor-community/proposals/issues/46)
+
+
 ## Features
 In the below tables you can see which features are working or not.
 ### Android
