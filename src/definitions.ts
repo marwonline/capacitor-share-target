@@ -36,7 +36,7 @@ export interface TextAsset extends ShareAsset {
 }
 
 /**
- * TypeGuard to check if an asset is an instance of TextAsset.
+ * TypeGuard to check if an asset is an instance of {@link TextAsset}.
  * @param asset
  */
 export function isTextAsset(asset: ShareAsset): asset is TextAsset {
@@ -46,18 +46,18 @@ export function isTextAsset(asset: ShareAsset): asset is TextAsset {
 export interface FileAsset extends ShareAsset {
   assetType: ShareType;
   /**
-   * System specific content URI. Use loadFile or loadAllFiles to get the data.
+   * System specific content URI. Use {@link loadFile} or {@link loadAllFiles} to get the data.
    */
   uri: string;
   /**
    * This method will hold the file data as base64 string once this event was
-   * processed via loadAllFiles. This property is undefined otherwise.
+   * processed via {@link loadAllFiles}. This property is undefined otherwise.
    */
   base64?: string;
 }
 
 /**
- * TypeGuard to check if an asset is an instance of FileAsset.
+ * TypeGuard to check if an asset is an instance of {@link FileAsset}.
  * @param asset
  */
 export function isFileAsset(asset: ShareAsset): asset is FileAsset {
