@@ -40,7 +40,7 @@ export interface TextAsset extends ShareAsset {
  * @param asset
  */
 export function isTextAsset(asset: ShareAsset): asset is TextAsset {
-  return asset.assetType === 'text';
+  return 'text' in asset ;
 }
 
 export interface FileAsset extends ShareAsset {
@@ -61,7 +61,7 @@ export interface FileAsset extends ShareAsset {
  * @param asset
  */
 export function isFileAsset(asset: ShareAsset): asset is FileAsset {
-  return asset.assetType === 'image';
+  return 'uri' in asset;
 }
 
 
