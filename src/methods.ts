@@ -1,12 +1,12 @@
 import {Plugins} from '@capacitor/core';
 const {Filesystem} = Plugins;
 
-import {isImageAsset, ShareAsset, ShareTargetEventData} from "./definitions";
+import {isFileAsset, ShareAsset, ShareTargetEventData} from "./definitions";
 
 
 
 function getFileUri(asset: ShareAsset): string | undefined{
-  if (isImageAsset(asset)) {
+  if (isFileAsset(asset)) {
     return asset.uri;
   }
   return undefined;
@@ -38,7 +38,7 @@ export async function loadFile(asset: ShareAsset): Promise<string | undefined> {
 export async function loadAllFiles(data: ShareTargetEventData): Promise<ShareTargetEventData> {
   const resultData = {...data};
   resultData.items = await Promise.all(data.items.map(async (asset: ShareAsset) => {
-    if (isImageAsset(asset)) {
+    if (isFileAsset(asset)) {
       return  {
         ...asset,
         base64: await loadFile(asset),

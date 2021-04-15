@@ -113,7 +113,7 @@ if (ShareTargetPlugin) {
     }
   );
   ShareTargetPlugin.addListener(
-    'image',
+    'file',
     (data: ShareTargetEventData) => {
       // On Android `data` only has "content" URIs which we've to load now.
       loadAllFiles(data).then((loadData) => {
