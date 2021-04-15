@@ -19,8 +19,9 @@ In the below tables you can see which features are working or not.
 |---|---|---|
 |Sharing text| beta (no tests) |   |
 |Sharing images| beta (no tests) | [PR #9](https://github.com/marwonline/capacitor-share-target/pull/9) |
-|Sharing audio files| - |   |
-|Sharing video files| - |   |
+|Sharing audio files| beta (no tests) | [PR #13](https://github.com/marwonline/capacitor-share-target/pull/13)  |
+|Sharing video files| beta (no tests) | [PR #13](https://github.com/marwonline/capacitor-share-target/pull/13)  |
+|Sharing other files| beta (no tests) | [PR #13](https://github.com/marwonline/capacitor-share-target/pull/13)  |
 
 ### iOS
 iOS development not yet started
@@ -65,7 +66,8 @@ public class MainActivity extends BridgeActivity {
 }
 ```
 
-And also register the Intents you want to listen in your `app/src/main/AndroidManifest.xml`:
+Afterwards, you must define the mime types of accepted shares of your app.  
+To do so, register the Intents you want to listen in your `app/src/main/AndroidManifest.xml` file:
 (Copied from https://developer.android.com/training/sharing/receive#kotlin)
 ```xml
 <manifest >
@@ -94,6 +96,8 @@ And also register the Intents you want to listen in your `app/src/main/AndroidMa
     </application>
 </manifest>
 ```
+
+For text shares, only `text/plain` works for now. All other mime types should work as intended. 
 
 #### Adjust your app code
 
