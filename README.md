@@ -5,9 +5,16 @@
 This project does not deliver a ready to use solution, yet. 
 Feel free to contribute.
 
+## Alternatives
+
+- Plugin: [Send Intent](https://github.com/tavosansal/capacitor-plugin-send-intent)
+- Proposal: [SendIntent Android](https://github.com/capacitor-community/proposals/issues/46)
+
+
 ## Features
 In the below tables you can see which features are working or not.
 ### Android
+
 |Feature|Status|Description|
 |---|---|---|
 |Sharing text| beta (no tests) |   |
@@ -17,6 +24,7 @@ In the below tables you can see which features are working or not.
 
 ### iOS
 iOS development not yet started
+
 |Feature|Status|Description|
 |---|---|---|
 |Sharing text| - |   |
@@ -27,7 +35,12 @@ iOS development not yet started
 
 ## Installation 
 
-`yarn add @marwonline/capacitor-share-target`
+~`yarn add @marwonline/capacitor-share-target`~
+
+This package is not yet published on NPM. So you've to use the git URL to check this out. 
+
+`yarn add https://github.com/marwonline/capacitor-share-target.git` 
+
 
 ### Android
 
