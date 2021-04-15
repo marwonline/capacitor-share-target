@@ -89,10 +89,12 @@ class ShareTargetPlugin : Plugin() {
             data.put("items", JSArray().apply {
                 uris.forEach {
                     uri ->
+                    // Ask the OS about the real mime type
+                    val mimeType = getMimeType(uri)
                     put(
                             JSObject().apply {
                                 put("assetType", "image")
-                                put("mimeType", intent.type)
+                                put("mimeType", mimeType)
                                 put("uri", uri)
                             }
                     )
@@ -100,5 +102,10 @@ class ShareTargetPlugin : Plugin() {
             })
             notifyListeners(ShareType.IMAGE.jsName, data, true)
         }
+    }
+
+    private fun getMimeType(uri: Uri): String? {
+        val cr = context.contentResolver;
+        return cr.getType(uri)
     }
 }
