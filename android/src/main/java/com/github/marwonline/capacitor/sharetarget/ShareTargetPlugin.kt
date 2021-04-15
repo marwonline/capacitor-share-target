@@ -20,15 +20,16 @@ class ShareTargetPlugin : Plugin() {
     }
 
     /**
-     * See documentation @see {https://developer.android.com/training/sharing/receive#kotlin}
+     * Share intent handler.
+     * For documentation, @see {https://developer.android.com/training/sharing/receive#kotlin}
      */
     override fun handleOnNewIntent(intent: Intent?) {
         when {
             intent?.action == Intent.ACTION_SEND -> {
-                handleSendItem(intent)
+                handleSendSingleItem(intent)
             }
             intent?.action == Intent.ACTION_SEND_MULTIPLE -> {
-                handleSendMultipleItems(intent) // Handle multiple images being sent
+                handleSendMultipleItems(intent)
             }
         }
     }
@@ -69,9 +70,10 @@ class ShareTargetPlugin : Plugin() {
     }
 
     /**
+     * Handler for single shared items. This will prepare an information object and push it to the respective listener.
      * @see {https://developer.android.com/guide/components/intents-common#Messaging}
      */
-    private fun handleSendItem(intent: Intent)  {
+    private fun handleSendSingleItem(intent: Intent)  {
         val data = JSObject()
 
         if (intent.type == "text/plain") {
@@ -96,6 +98,10 @@ class ShareTargetPlugin : Plugin() {
         }
     }
 
+    /**
+     * Handler for multiple shared items. As it's impossible to share multiple texts or a mix of texts and files,
+     * this concentrates on handling files only.
+     */
     private fun handleSendMultipleItems(intent: Intent) {
         intent.getParcelableArrayListExtra<Uri>(Intent.EXTRA_STREAM)?.let {
             uris ->
