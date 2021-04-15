@@ -69,32 +69,43 @@ class ShareTargetPlugin : Plugin() {
         }
     }
 
+    private fun handleSingleTextIntent(intent: Intent) {
+        intent.getStringExtra(Intent.EXTRA_TEXT)?.let { text ->
+            if (text.isNullOrEmpty()) {
+                return handleSingleUriIntent(intent);
+            }
+
+            val data = JSObject()
+            data.put("items", JSArray().apply {
+                put(getJSObject(text))
+            })
+
+            notifyListeners(ShareType.TEXT.jsName, data, true)
+        }
+    }
+
+    private fun handleSingleUriIntent(intent: Intent) {
+        (intent.getParcelableExtra<Parcelable>(Intent.EXTRA_STREAM) as? Uri)?.let {
+                uri ->
+
+            val data = JSObject()
+            data.put("items", JSArray().apply {
+                put(getJSObject(uri))
+            })
+
+            notifyListeners(ShareType.FILE.jsName, data, true)
+        }
+    }
+
     /**
      * Handler for single shared items. This will prepare an information object and push it to the respective listener.
      * @see {https://developer.android.com/guide/components/intents-common#Messaging}
      */
     private fun handleSendSingleItem(intent: Intent)  {
-        val data = JSObject()
-
         if (intent.type == "text/plain") {
-            intent.getStringExtra(Intent.EXTRA_TEXT)?.let { text ->
-
-                data.put("items", JSArray().apply {
-                    put(getJSObject(text))
-                })
-
-                notifyListeners(ShareType.TEXT.jsName, data, true)
-            }
+            handleSingleTextIntent(intent)
         } else {
-            (intent.getParcelableExtra<Parcelable>(Intent.EXTRA_STREAM) as? Uri)?.let {
-                uri ->
-
-                data.put("items", JSArray().apply {
-                    put(getJSObject(uri))
-                })
-
-                notifyListeners(ShareType.FILE.jsName, data, true)
-            }
+            handleSingleUriIntent(intent)
         }
     }
 
