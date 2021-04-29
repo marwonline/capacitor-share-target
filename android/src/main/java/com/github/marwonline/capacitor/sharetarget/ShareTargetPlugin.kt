@@ -15,97 +15,117 @@ class ShareTargetPlugin : Plugin() {
     companion object {
         enum class ShareType(val jsName: String) {
             TEXT("text"),
-            IMAGE("image")
+            FILE("file")
         }
     }
 
     /**
-     * See documentation @see {https://developer.android.com/training/sharing/receive#kotlin}
+     * Share intent handler.
+     * For documentation, @see {https://developer.android.com/training/sharing/receive#kotlin}
      */
     override fun handleOnNewIntent(intent: Intent?) {
-
         when {
             intent?.action == Intent.ACTION_SEND -> {
-                // handle it xD
-                if (intent.type == "text/plain") {
-                    handleSendText(intent)
-                } else if (intent.type?.startsWith("image/") == true) {
-                    handleSendImage(intent) // Handle single image being sent
-                }
-
+                handleSendSingleItem(intent)
             }
-            intent?.action == Intent.ACTION_SEND_MULTIPLE
-                    && intent.type?.startsWith("image/") == true -> {
-                handleSendMultipleImages(intent) // Handle multiple images being sent
+            intent?.action == Intent.ACTION_SEND_MULTIPLE -> {
+                handleSendMultipleItems(intent)
             }
         }
     }
 
-    /**
-     * @see {https://developer.android.com/guide/components/intents-common#Messaging}
-     */
-    private fun handleSendText(intent: Intent) {
+    private fun getMimeType(uri: Uri): String? {
+        val cr = context.contentResolver
+        return cr.getType(uri)
+    }
+
+    private fun getJSObject(uri: Uri): JSObject {
+        val mimeType = getMimeType(uri)
+        val data = JSObject()
+
+        data.put("mimeType", mimeType)
+        data.put("uri", uri)
+
+        when {
+            mimeType?.toString()?.startsWith("image/") == true -> {
+                data.put("assetType", "image")
+            }
+            mimeType?.toString()?.startsWith("video/") == true -> {
+                data.put("assetType", "video")
+            }
+            else -> {
+                data.put("assetType", "raw")
+            }
+        }
+
+        return data
+    }
+
+    private fun getJSObject(text: String): JSObject {
+        return JSObject().apply{
+            put("mimeType", "text/plain")
+            put("assetType", "text")
+            put("text", text)
+        }
+    }
+
+    private fun handleSingleTextIntent(intent: Intent) {
         intent.getStringExtra(Intent.EXTRA_TEXT)?.let { text ->
+            if (text.isNullOrEmpty()) {
+                return handleSingleUriIntent(intent);
+            }
+
             val data = JSObject()
             data.put("items", JSArray().apply {
-                put(
-                        JSObject().apply {
-                            put("assetType", "text")
-                            put("mimeType", intent.type)
-                            put("text", text)
-                        }
-                )
+                put(getJSObject(text))
             })
 
             notifyListeners(ShareType.TEXT.jsName, data, true)
         }
     }
 
-    private fun handleSendImage(intent: Intent) {
+    private fun handleSingleUriIntent(intent: Intent) {
         (intent.getParcelableExtra<Parcelable>(Intent.EXTRA_STREAM) as? Uri)?.let {
-            // Update UI to reflect image being shared
-            uri ->
+                uri ->
 
             val data = JSObject()
             data.put("items", JSArray().apply {
-                put(
-                        JSObject().apply {
-                            put("assetType", "image")
-                            put("mimeType", intent.type)
-                            put("uri", uri)
-                        }
-                )
+                put(getJSObject(uri))
             })
 
-            notifyListeners(ShareType.IMAGE.jsName, data, true)
+            notifyListeners(ShareType.FILE.jsName, data, true)
         }
     }
 
-    private fun handleSendMultipleImages(intent: Intent) {
+    /**
+     * Handler for single shared items. This will prepare an information object and push it to the respective listener.
+     * @see {https://developer.android.com/guide/components/intents-common#Messaging}
+     */
+    private fun handleSendSingleItem(intent: Intent)  {
+        if (intent.type == "text/plain") {
+            handleSingleTextIntent(intent)
+        } else {
+            handleSingleUriIntent(intent)
+        }
+    }
+
+    /**
+     * Handler for multiple shared items. As it's impossible to share multiple texts or a mix of texts and files,
+     * this concentrates on handling files only.
+     */
+    private fun handleSendMultipleItems(intent: Intent) {
         intent.getParcelableArrayListExtra<Uri>(Intent.EXTRA_STREAM)?.let {
             uris ->
-            // Update UI to reflect multiple images being shared
+
             val data = JSObject()
             data.put("items", JSArray().apply {
                 uris.forEach {
                     uri ->
-                    // Ask the OS about the real mime type
-                    val mimeType = getMimeType(uri)
-                    put(
-                            JSObject().apply {
-                                put("assetType", "image")
-                                put("mimeType", mimeType)
-                                put("uri", uri)
-                            }
-                    )
+                    put(getJSObject(uri))
                 }
             })
-            notifyListeners(ShareType.IMAGE.jsName, data, true)
-        }
-    }
 
-    private fun getMimeType(uri: Uri): String? {
-        val cr = context.contentResolver;
-        return cr.getType(uri)
+            notifyListeners(ShareType.FILE.jsName, data, true)
+        }
     }
 }
