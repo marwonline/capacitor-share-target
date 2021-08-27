@@ -93,5 +93,4 @@ capacitor-cordova-android-plugins
 app/src/main/assets/public
 
 # build folder
-/dist
 node_modules
