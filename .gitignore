@@ -20,6 +20,7 @@ bin/
 gen/
 out/
 release/
+dist/
 
 # Gradle files
 .gradle/
@@ -92,4 +93,4 @@ capacitor-cordova-android-plugins
 app/src/main/assets/public
 
 # build folder
-/dist
+node_modules
