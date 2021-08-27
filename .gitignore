@@ -20,6 +20,7 @@ bin/
 gen/
 out/
 release/
+dist/
 
 # Gradle files
 .gradle/
@@ -93,3 +94,4 @@ app/src/main/assets/public
 
 # build folder
 /dist
+node_modules
